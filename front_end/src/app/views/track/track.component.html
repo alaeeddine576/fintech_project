@@ -1,0 +1,130 @@
+<div x-data="{ mobileSidebarOpen: false, desktopSidebarOpen: true }"></div>
+<!-- Page Container -->
+<div id="page-container"
+  class="mx-auto flex min-h-screen w-full min-w-[320px] flex-col bg-gradient-to-br from-gray-900 to-black transition-all duration-300 ease-out lg:ps-64"
+  x-bind:class="{ 'lg:ps-64': desktopSidebarOpen }">
+  <!-- Page Sidebar -->
+  <nav id="page-sidebar"
+    class="fixed bottom-0 start-0 top-0 z-50 flex h-full w-full flex-col border-red-800 bg-gradient-to-b from-red-600 to-white/20 backdrop-blur-lg transition-transform duration-300 ease-out lg:w-64 ltr:lg:border-r-2 rtl:lg:border-l-2"
+    x-bind:class="{
+      'ltr:-translate-x-full rtl:translate-x-full': !mobileSidebarOpen,
+      'translate-x-0': mobileSidebarOpen,
+      'ltr:lg:-translate-x-full rtl:lg:translate-x-full': !desktopSidebarOpen,
+      'ltr:lg:translate-x-0 rtl:lg:translate-x-0': desktopSidebarOpen,
+    }" aria-label="Main Sidebar Navigation">
+    <!-- Sidebar Header -->
+    <div class="flex h-16 w-full flex-none items-center justify-between border-b border-red-800 ps-5 lg:pe-4">
+      <!-- Brand -->
+      <a href="/" class="group inline-flex items-center gap-2 font-semibold text-white hover:text-red-100">
+        <svg class="hi-outline hi-command-line inline-block h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+          fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+        </svg>
+        <span>TrackEth</span>
+      </a>
+      <!-- END Brand -->
+
+      <!-- Extra Actions -->
+      <div class="flex items-center">
+        <button type="button"
+          class="ms-3 inline-flex items-center justify-center p-4 leading-5 text-white hover:text-red-100 focus:outline-none active:text-red-200 lg:hidden"
+          x-on:click="mobileSidebarOpen = false">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="hi-solid hi-x-mark inline-block h-5 w-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <div class="overflow-y-auto">
+      <div class="w-full space-y-6 py-4">
+        <nav class="space-y-1">
+          <a href="/track"
+            class="group flex items-center gap-2 border-y border-red-800 bg-red-700/30 px-5 py-1 font-medium hover:bg-red-700/50 transition-all duration-300">
+            <span class="flex flex-none items-center text-white">
+              <svg class="hi-outline hi-home inline-block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+            </span>
+            <span class="grow py-2 text-white">Dashboard</span>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header id="page-header"
+    class="fixed end-0 start-0 top-0 z-30 flex h-16 flex-none items-center border-b border-red-800 bg-black/50 backdrop-blur-lg transition-all duration-300 ease-out lg:ps-64"
+    x-bind:class="{ 'lg:ps-64': desktopSidebarOpen }">
+    <!-- Header content remains the same, just updated colors -->
+    <div class="container mx-auto flex w-full justify-between px-0 lg:max-w-7xl lg:px-5">
+      <div class="flex flex-none items-center">
+        <div class="lg:hidden">
+          <a href="javascript:void(0)"
+            class="inline-flex items-center justify-center p-4 leading-5 text-white hover:text-red-100 focus:outline-none active:text-red-200">
+            <svg class="hi-outline hi-command-line inline-block h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main id="page-content" class="flex max-w-full flex-auto flex-col bg-gradient-to-br from-gray-900 to-black pt-16">
+    <!-- ETH Price Card -->
+    <div class="border-b border-red-800 py-3">
+      <div
+        class="flex grow items-center justify-between p-5 bg-black/50 backdrop-blur-lg m-5 rounded-lg shadow-lg w-96 border border-red-800 hover:shadow-red-500/20 transition-shadow duration-300">
+        <dl>
+          <dt id="eth-price" class="text-2xl font-bold text-red-500">$0</dt>
+          <dd class="text-sm font-medium text-red-400">Ethereum Price</dd>
+        </dl>
+        <div id="price-icon"
+          class="flex h-12 w-12 items-center justify-center rounded-xl border border-red-800 bg-red-900/30 text-red-500 hover:bg-red-900/50 transition-all duration-300">
+          <svg id="price-icon-svg" class="hi-outline inline-block h-6 w-6" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path id="price-icon-path" stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="container mx-auto w-full p-4 xl:max-w-7xl">
+      <div class="">
+        <div
+          class="rounded border border-red-800 bg-black/50 backdrop-blur-lg p-5 mb-5 hover:shadow-red-500/20 transition-shadow duration-300">
+          <iframe src="assets/pages/flux_tresorerie.html" width="100%" height="500"></iframe>
+        </div>
+        <div
+          class="rounded border border-red-800 bg-black/50 backdrop-blur-lg p-5 mb-5 hover:shadow-red-500/20 transition-shadow duration-300">
+          <iframe src="assets/pages/volume_par_bloc.html" width="100%" height="500"></iframe>
+        </div>
+        <div
+          class="rounded border border-red-800 bg-black/50 backdrop-blur-lg p-5 hover:shadow-red-500/20 transition-shadow duration-300">
+          <iframe src="assets/pages/frais_de_gas_par_bloc.html" width="100%" height="500"></iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Page Footer -->
+  <footer id="page-footer" class="flex grow-0 items-center border-t border-red-800 bg-black/50 backdrop-blur-lg">
+    <div
+      class="container mx-auto flex flex-col gap-2 px-4 py-6 text-center text-sm font-medium text-red-500 md:flex-row md:justify-between md:gap-0 md:text-start lg:px-8 xl:max-w-7xl">
+      <div>© <span class="font-semibold">TrackEth</span></div>
+    </div>
+  </footer>
+</div>
