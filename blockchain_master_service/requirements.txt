@@ -1,4 +1,0 @@
-fastapi
-web3
-uvicorn[gunicorn]
-python-dotenv
